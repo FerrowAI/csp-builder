@@ -51,4 +51,4 @@ const csp = new CSPBuilder()
 - frame-ancestors dropped from toMeta() per spec (meta tag limitation)
 - No runtime enforcement; purely header generation
 
-Part of the Ferrow open-source toolkit: https://github.com/Ruzylo-cloud/ferrow-toolkit — sponsored by https://ferrow.ai
+Part of the Ferrow open-source toolkit: https://github.com/FerrowAI/ferrow-toolkit — sponsored by https://ferrow.ai
