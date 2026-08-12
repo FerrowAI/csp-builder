@@ -1,0 +1,54 @@
+# csp-builder
+
+> Typed Content-Security-Policy builder with fluent directive methods, nonce/hash helpers, and standards-compliant header generation.
+
+Provides a strongly-typed builder for constructing Content-Security-Policy headers with method chaining. Includes directive setters (defaultSrc, scriptSrc, styleSrc, etc.), keyword constants ('self', 'none', with 'unsafe-inline' documented as discouraged), cryptographic nonce and hash generation, reportOnly mode, header serialization (toString), metadata variant (toMeta — drops frame-ancestors per spec), and round-trip parsing.
+
+## API
+
+```typescript
+export const KEYWORDS: { self, none, unsafeInline, unsafeEval, strictDynamic, reportSample }
+
+class CSPBuilder {
+  constructor(options?: { reportOnly?: boolean })
+  defaultSrc(...values: DirectiveValue[]): this
+  scriptSrc(...values: DirectiveValue[]): this
+  styleSrc(...values: DirectiveValue[]): this
+  imgSrc(...values: DirectiveValue[]): this
+  connectSrc(...values: DirectiveValue[]): this
+  frameAncestors(...values: DirectiveValue[]): this
+  nonce(value: string): string
+  hash(content: string, algorithm?: "sha256" | "sha384" | "sha512"): string
+  generateNonce(): string
+  toString(): string
+  toMeta(): string
+  getHeaderName(): string
+  static parse(headerValue: string): CSPBuilder
+}
+```
+
+## Install
+
+```bash
+npm install csp-builder
+```
+
+## Use
+
+```typescript
+import CSPBuilder, { KEYWORDS } from "csp-builder";
+
+const csp = new CSPBuilder()
+  .defaultSrc(KEYWORDS.self)
+  .scriptSrc(KEYWORDS.self, "https://trusted.com")
+  .nonce(csp.generateNonce())
+  .toString();
+```
+
+## Limits
+
+- No validation of directive combinations (that's application logic)
+- frame-ancestors dropped from toMeta() per spec (meta tag limitation)
+- No runtime enforcement; purely header generation
+
+Part of the Ferrow open-source toolkit: https://github.com/Ruzylo-cloud/ferrow-toolkit — sponsored by https://ferrow.ai
