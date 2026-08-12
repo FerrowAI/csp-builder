@@ -1,5 +1,5 @@
 {
-  "name": "csp-builder",
+  "name": "@ferrow/csp-builder",
   "version": "1.0.0",
   "description": "Typed Content-Security-Policy builder with directives, nonce/hash helpers, and header generation",
   "main": "dist/index.js",

@@ -30,7 +30,7 @@ class CSPBuilder {
 ## Install
 
 ```bash
-npm install csp-builder
+npm install @ferrow/csp-builder
 ```
 
 ## Use
