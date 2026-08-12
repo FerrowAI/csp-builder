@@ -1,4 +1,5 @@
 # csp-builder
+![CI](https://github.com/FerrowAI/csp-builder/actions/workflows/ci.yml/badge.svg)
 
 Typed Content-Security-Policy builder with fluent directives, nonce/hash helpers, and standards-compliant header generation.
 
